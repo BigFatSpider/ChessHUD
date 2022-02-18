@@ -273,25 +273,27 @@ def main():
                 print(e)
                 msg.update(str(e))
         elif event == 'PGN':
+            elem = window['PGNinput']
             try:
-                elem = window['PGNinput']
                 game = chess.pgn.read_game(StringIO(elem.get()))
-                board = game.board()
-                for move in game.mainline_moves():
-                    board.push(move)
-                movestack.clear()
-                try:
-                    while True:
-                        movestack.append(board.pop())
-                except IndexError as e:
-                    pass
-                elem.update('')
-                msg.update('')
-                updateattack(str(board))
-            except:
-                print('pgn exception')
-                msg.update('pgn exception')
-                raise
+                if game is not None:
+                    board = game.board()
+                    if board is not None:
+                        for move in game.mainline_moves():
+                            board.push(move)
+                        movestack.clear()
+                        try:
+                            while True:
+                                movestack.append(board.pop())
+                        except IndexError as e:
+                            pass
+                        elem.update('')
+                        msg.update('')
+                        updateattack(str(board))
+            except Exception as e:
+                emsg = 'pgn exception: ' + str(e)
+                print(emsg)
+                msg.update(emsg)
         elif event in squarenames:
             squarename = chess.SQUARE_NAMES[63 - chess.SQUARE_NAMES.index(event)] if flipped else event
             if clickmove == '':
