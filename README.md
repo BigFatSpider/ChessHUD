@@ -3,4 +3,5 @@ Chessacabra is a chess attack visualizer. It overlays a color display of the att
 
 # Credits
 https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces
+
 https://en.wikipedia.org/wiki/User:Cburnett/GFDL_images/Chess
