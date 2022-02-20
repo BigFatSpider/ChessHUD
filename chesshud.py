@@ -86,7 +86,7 @@ def main():
                   [buttons[8], jumpinput(), buttons[9], pixinput(), pixtext(), buttons[10]],
                   [buttons[11], pgninput()],
                   [msg]]
-        window = sg.Window('Chessacabra', layout, return_keyboard_events=True)
+        window = sg.Window('Chess HUD', layout, return_keyboard_events=True)
         window.finalize()
         for row in lboard:
             for butt in row:
